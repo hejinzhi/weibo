@@ -1,0 +1,71 @@
+<ion-header>
+</ion-header>
+<ion-content class="search">
+<!--     <div class="search-div">
+        <ion-input type="text" class="search-input" placeholder="大家都在搜：李晨 范冰冰">
+        </ion-input>
+    </div> -->
+
+    <!-- (ionInput) 代表輸入的時候觸發-->
+    <!-- (ionInput)="getItems($event)"  -->
+
+      <ion-navbar>
+    <ion-searchbar  placeholder="大家都在搜：李晨 范冰冰" ></ion-searchbar>
+  </ion-navbar>
+
+<ion-slides #mySlider [options]="mySlideOptions" (click)="goToSlide()">
+
+  <ion-slide *ngFor="let ad of searchMsg.ads">
+    <img src={{ad}} alt="">
+  </ion-slide>
+</ion-slides>
+
+    <ion-row>
+        <ion-col width-50>{{searchMsg.hotSearch[0]}}</ion-col>
+        <span class="short-line"></span>
+        <ion-col width-50>{{searchMsg.hotSearch[1]}}</ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col width-50>{{searchMsg.hotSearch[2]}}</ion-col>
+        <span class="short-line"></span>
+        <ion-col width-50>{{searchMsg.hotSearch[3]}}</ion-col>
+    </ion-row>
+    <div class="space-line"></div>
+    <ion-list *ngFor="let g of searchMsg.group">
+        <ion-item *ngFor="let group of g">
+            <div>
+                <div class="search-left">
+                    <!-- <ion-icon name="home"></ion-icon> -->
+                    <img src={{group.icon}} class="img-icon">
+                    <span>{{group.title}}</span>
+                    <span class="search-left-subtitle">{{group.subTitle}} &nbsp;</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+
+       <!--  <ion-list >
+        <ion-item *ngFor="let group of searchMsg.group2">
+            <div>
+                <div class="search-left">
+                    <img src={{group.icon}} class="img-icon">
+                    <span>{{group.title}}</span>
+                    <span class="search-left-subtitle">{{group.subTitle}}</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list>
+
+        <ion-list >
+        <ion-item *ngFor="let group of searchMsg.group3">
+            <div>
+                <div class="search-left">
+                    <img src={{group.icon}} class="img-icon">
+                    <span>{{group.title}}</span>
+                    <span class="search-left-subtitle">{{group.subTitle}}</span>
+                </div>
+            </div>
+        </ion-item>
+    </ion-list> -->
+
+</ion-content>

@@ -1,0 +1,23 @@
+
+ <ion-header>
+    <ion-navbar hideBackButton>
+        <ion-title>
+            <h3>发评论</h3>
+        </ion-title>
+        <ion-buttons start>
+            <button (click)="goBack()">
+                取消
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button [disabled]="!plContent" (click)="sendPingLun()">
+                发送
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="pinglun">
+    <ion-textarea placeholder="    写评论..."  [(ngModel)]="plContent" autofocus></ion-textarea>
+</ion-content>
+<ion-footer>
+</ion-footer>

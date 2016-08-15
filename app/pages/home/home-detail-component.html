@@ -1,0 +1,152 @@
+<ion-header>
+<!-- hideBackButton -->
+    <ion-navbar >  
+        <ion-title>
+            <h3>微博正文</h3>
+        </ion-title>
+       <!--  <ion-buttons start>
+            <button (click)="goBack()">
+                <ion-icon name="arrow-back"></ion-icon>
+            </button>
+        </ion-buttons> -->
+        <ion-buttons end>
+            <button>
+                <ion-icon name="radio-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="home" hide-tabs >
+    <!-- <div *ngFor="let msg of mainMsg">
+    {{msg.name}}
+</div> -->
+    <ion-card>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src={{msg.headFace}}>
+            </ion-avatar>
+            <h2>{{msg.name}}</h2>
+            <p>{{msg.sendTime}} 来自 {{msg.sendMachine}}</p>
+        </ion-item>
+        <p>{{msg.desc}}</p>
+        <div>
+            <ion-row *ngIf="msg.descImage.length==1">
+                <ion-col width-50>
+                    <img src={{msg.descImage[0]}} class="content-img">
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="msg.descImage.length==2">
+                <ion-col width-33>
+                    <img src={{msg.descImage[0]}} class="content-img">
+                </ion-col>
+                <ion-col width-33>
+                    <img src={{msg.descImage[1]}} class="content-img">
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="msg.descImage.length==3">
+                <ion-col width-33>
+                    <img src={{msg.descImage[0]}} class="content-img">
+                </ion-col>
+                <ion-col width-33>
+                    <img src={{msg.descImage[1]}} class="content-img">
+                </ion-col>
+                <ion-col width-33>
+                    <img src={{msg.descImage[2]}} class="content-img">
+                </ion-col>
+            </ion-row>
+        </div>
+        <!-- <ion-row class="bottom-button">
+            <ion-col width-33>
+                <button small clear gray>
+                    <ion-icon name="send-outline"></ion-icon>
+                    <div>{{msg.resendNum}}</div>
+                </button>
+            </ion-col>
+            <span class="short-line"></span>
+            <ion-col width-33>
+                <button small clear gray>
+                    <ion-icon name="chatboxes-outline"></ion-icon>
+                    <div>{{msg.commentNum}}</div>
+                </button>
+            </ion-col>
+            <span class="short-line"></span>
+            <ion-col width-33>
+                <button small clear gray>
+                    <ion-icon name="thumbs-up-outline"></ion-icon>
+                    <div>{{msg.thumbNum}}</div>
+                </button>
+            </ion-col>
+        </ion-row> -->
+    </ion-card>
+
+    <div class="option-menu">
+        <ion-row>
+            <ion-col width-20><button [ngClass]="{'highline': whatToShow == 'zhuanfa'}"  gray clear outline (click)="show('zhuanfa')">转发{{msg.resendNum}}</button></ion-col>
+            <ion-col width-20><button [ngClass]="{'highline': whatToShow == 'pinglun'}" gray clear outline (click)="show('pinglun')">评论{{msg.commentNum}}</button></ion-col>
+            <ion-col offset-33><button gray clear outline item-right [ngClass]="{'highline': whatToShow == 'zan'}" (click)="show('zan')">赞{{msg.thumbNum}}</button></ion-col>
+        </ion-row>
+    </div>
+
+    <ion-list *ngIf="whatToShow == 'pinglun'">
+        <ion-item *ngFor="let p of pinglun">
+            <ion-avatar item-left>
+                <img src={{p.headFace}} alt="">
+            </ion-avatar>
+            <h2>{{p.name}}</h2>
+            <button clear item-right  class="thumb-up" (click)="toggle(p)" [ngClass]="{'button-clear-danger':p.thumbUp}"><ion-icon name="thumbs-up-outline" ><span>{{p.thumbNum}}</span></ion-icon></button> 
+            <p>{{p.date}} {{p.time}}</p>
+            <p>{{p.content}}</p>
+        </ion-item>
+    </ion-list>
+
+    <ion-list *ngIf="whatToShow == 'zhuanfa'">
+        <ion-item *ngFor="let p of zhuanfa">
+            <ion-avatar item-left>
+                <img src={{p.headFace}} alt="">
+            </ion-avatar>
+            <h2>{{p.name}}</h2>
+            <button clear item-right  class="thumb-up" (click)="toggle(p)" [ngClass]="{'button-clear-danger':p.thumbUp}"></button> 
+            <p>{{p.date}} {{p.time}}</p>
+            <p>{{p.content}}</p>
+        </ion-item>
+    </ion-list>
+
+        <ion-list *ngIf="whatToShow == 'zan'">
+        <ion-item *ngFor="let p of zan">
+            <ion-avatar item-left>
+                <img src={{p.headFace}} alt="">
+            </ion-avatar>
+            <h2>{{p.name}}</h2>
+        </ion-item>
+    </ion-list>
+
+     <ion-infinite-scroll (ionInfinite)="doInfinite($event,whatToShow)">
+   <ion-infinite-scroll-content></ion-infinite-scroll-content>
+ </ion-infinite-scroll>
+
+</ion-content>
+
+    <ion-footer class="home">
+        <ion-row class="option-menu">
+            <ion-col width-33>
+                <button  clear >
+                    <ion-icon name="send-outline"></ion-icon>
+                    <div>转发</div>
+                </button>
+            </ion-col>
+            <span class="short-line-footer"></span>
+            <ion-col width-33>
+                <button  clear (click)="goToXiePingLun()">
+                    <ion-icon name="chatboxes-outline"></ion-icon>
+                    <div>评论</div>
+                </button>
+            </ion-col>
+            <span class="short-line-footer"></span>
+            <ion-col width-33>
+                <button  clear >
+                    <ion-icon name="thumbs-up-outline"></ion-icon>
+                    <div>赞</div>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-footer>

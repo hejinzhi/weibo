@@ -1,0 +1,40 @@
+.account {
+    ion-avatar img {
+        max-width: 65px;
+        max-height: 65px;
+        border-radius: 65px;
+    }
+
+	ion-row{
+		text-align: center;
+		height: 50px;
+	}
+	
+		.item.head-top{
+		height: 80px;
+	}
+
+	.item.head-bottom{
+		height: 50px;
+	}
+
+	.sub-title-font{
+		color: #939393;
+		font-size: 14px;
+	}
+
+	ion-thumbnail img{
+		height: 35px;
+		width: 35px;
+	}
+
+	ion-thumbnail {
+    min-width: 35px;
+    min-height: 35px;
+}
+
+    ion-list {
+        margin: -1px 0 10px 0;
+    }
+
+}

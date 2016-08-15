@@ -1,0 +1,79 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            <h3>微博</h3>
+        </ion-title>
+        <ion-buttons start>
+            <button>
+                <ion-icon name="person-add-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button>
+                <ion-icon name="radio-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="home">
+    <ion-card *ngFor="let msg of mainMsg" (click)="goToDetailPage(msg)">
+        <ion-item>
+            <ion-avatar item-left>
+                <img src={{msg.headFace}}>
+            </ion-avatar>
+            <h2>{{msg.name}}</h2>
+            <p>{{msg.sendTime}} 来自 {{msg.sendMachine}}</p>
+        </ion-item>
+        <p>{{msg.desc}}</p>
+        <div>
+            <ion-row *ngIf="msg.descImage.length==1">
+                <ion-col width-50>
+                    <img src={{msg.descImage[0]}} class="content-img">
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="msg.descImage.length==2">
+                <ion-col width-33>
+                    <img src={{msg.descImage[0]}} class="content-img">
+                </ion-col>
+                <ion-col width-33>
+                    <img src={{msg.descImage[1]}} class="content-img">
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="msg.descImage.length==3">
+                <ion-col width-33>
+                    <img src={{msg.descImage[0]}} class="content-img">
+                </ion-col>
+                <ion-col width-33>
+                    <img src={{msg.descImage[1]}} class="content-img">
+                </ion-col>
+                <ion-col width-33>
+                    <img src={{msg.descImage[2]}} class="content-img">
+                </ion-col>
+            </ion-row>
+        </div>
+        <ion-row class="bottom-button">
+            <ion-col width-33>
+                <button small clear gray>
+                    <ion-icon name="send-outline"></ion-icon>
+                    <div>{{msg.resendNum}}</div>
+                </button>
+            </ion-col>
+            <span class="short-line"></span>
+            <ion-col width-33>
+                <button small clear gray>
+                    <ion-icon name="chatboxes-outline"></ion-icon>
+                    <div>{{msg.commentNum}}</div>
+                </button>
+            </ion-col>
+            <span class="short-line"></span>
+            <ion-col width-33>
+                <button small clear gray>
+                    <ion-icon name="thumbs-up-outline"></ion-icon>
+                    <div>{{msg.thumbNum}}</div>
+                </button>
+            </ion-col>
+        </ion-row>
+    </ion-card>
+</ion-content>
+
+

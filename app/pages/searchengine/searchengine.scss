@@ -1,0 +1,83 @@
+ion-content {
+    background-color: #F2F2F2;
+}
+
+.search {
+    .search-left {
+        float: left;
+        height: 21px;
+        line-height: 21px;
+    }
+    .search-left-title {
+        margin-left: 5px;
+    }
+    .search-left-subtitle {
+        // background-color: red;
+        font-size: 1.2rem;
+        color: #666;
+        height: 21px;
+        display: inline-block;
+        line-height: 21px;
+        margin-left: 10px;
+    }
+    ion-list {
+        margin: -1px 0 10px 0;
+    }
+    ion-row {
+        background-color: #fff;
+        height: 45px;
+    }
+    ion-col {
+        line-height: 45px;
+        text-align: center;
+        border-bottom: solid 1px #ccc;
+    }
+    .short-line {
+        border-right: solid 1px #ccc;
+        margin-top: 15px;
+        height: 20px;
+    }
+    .space-line {
+        height: 10px;
+    }
+    .img-icon {
+        height: 21px;
+        width: 21px;
+        vertical-align: text-top;
+    }
+    .search-input {}
+
+    .search-div {
+        background-color: #fff;
+        height: 50px;
+        position: relative;
+        width: 100%;
+    }
+    .search-input {
+        background-color: #eee;
+        border-radius: 5px;
+        height: 30px;
+        line-height: 0px;
+        width: 95%;
+        position: absolute;
+        margin-top: 3%;
+        margin-left: 2%;
+        text-indent: 30px;
+        background: #eee url("/img/weibo_search.png") 0 5px no-repeat ;
+    }
+    .swiper-wrapper {
+        height: 100px;
+        width: 100%;
+    }
+    ion-slides {
+        height: 100px;
+    }
+    ion-slides img {
+        height: 100px;
+    }
+    .swiper-container-horizontal > .swiper-pagination {
+        bottom: 2px;
+        left: 40%;
+        width: 100%;
+    }
+}

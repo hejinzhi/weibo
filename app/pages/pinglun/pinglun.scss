@@ -1,0 +1,15 @@
+.pinglun {
+    scroll-content {
+        background-color: #fff;
+    }
+    textarea.text-input {
+        text-indent: 15px;
+        margin-left: 5px;
+        height: 100%;
+    }
+    ion-input,
+    ion-textarea {
+        width: 100%;
+        height: 100%;
+    }
+}

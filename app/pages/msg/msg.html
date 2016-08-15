@@ -1,0 +1,55 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>
+            消息
+        </ion-title>
+        <ion-buttons start>
+            <button>发现群</button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button>
+                <ion-icon name="chatbubbles-outline"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="list-avatar-page">
+    <ion-list>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="img/ben.png" alt="">
+            </ion-avatar>
+            <div>@我的
+                <div class="arrow-forward">
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </div>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="img/ionic.png" alt="">
+            </ion-avatar>
+            <div>评论</div>
+            <div class="arrow-forward">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </div>
+        </ion-item>
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="img/max.png" alt="">
+            </ion-avatar>
+            <div>赞</div>
+            <div class="arrow-forward">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </div>
+        </ion-item>
+        <ion-item *ngFor="let notify of notifyMsg">
+            <ion-avatar item-left>
+                <img src={{notify.headFace}} alt="">
+            </ion-avatar>
+            <h2>{{notify.title}}</h2>
+            <p>{{notify.subTitle}}</p>
+            <ion-note item-right>{{notify.notifyTime}}</ion-note>
+        </ion-item>
+    </ion-list>
+</ion-content>
