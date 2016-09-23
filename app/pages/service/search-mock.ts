@@ -25,12 +25,12 @@ export const SEARCH: Search =
 					subTitle: '随时随地一起看新闻'
 				},
 				{
-					icon: 'img/search-toutiao.png',
+					icon: 'img/search-game.png',
 					title: '玩游戏',
 					subTitle: '微博上最火的游戏'
 				},
 				{
-					icon: 'img/search-toutiao.png',
+					icon: 'img/search-location.png',
 					title: '周边',
 					subTitle: '发现“伦教街区”新鲜事'
 				}

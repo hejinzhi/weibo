@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-navbar hideBackButton>
+        <!--         <ion-title>
+            <h3>微博正文</h3>
+        </ion-title> -->
+        <div class="new-weibo header">
+            <h5>发微博</h5>
+            <p>jin___</p>
+        </div>
+        <ion-buttons start>
+            <button (click)="goBack()">
+                <!-- <ion-icon name="arrow-back"></ion-icon> -->
+                取消
+            </button>
+        </ion-buttons>
+        <ion-buttons end>
+            <button (click)="sendWeibo()">
+                发送
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+<ion-content class="new-weibo" #content>
+    <!--<input name="pic" type="file" accept="image/*" multiple="multiple" style="height:110px;width:110px;"/>-->
+
+
+    <ion-textarea rows="4" placeholder="分享新鲜事" [(ngModel)]="weiboDesc"></ion-textarea>
+
+    <div [virtualScroll]="uploadImages" [approxItemHeight]="imageSize + 'px'" [approxItemWidth]="imageSize + 'px'" [bufferRatio]="5">
+        <div *virtualItem="let imageEntity" class="image-container" [style.width]="imageSize + 'px'" [style.height]="imageSize + 'px'" (click)="imageClicked(imageEntity,$event)">
+            <!--<img src={{imageEntity}} class="image">-->
+            <ion-img src={{imageEntity}} class="image" ></ion-img>
+        </div>
+    </div>
+
+        <!--<div [virtualScroll]="uploadImages" [approxItemHeight]="150 + 'px'" [approxItemWidth]="150 + 'px'" [bufferRatio]="5">
+        <div *virtualItem="let imageEntity" class="image-container" [style.width]="150 + 'px'" [style.height]="150 + 'px'" (click)="imageClicked(imageEntity,$event)">
+            <img src={{imageEntity}} class="image">
+        </div>
+    </div>-->
+
+    <!--<p>{{imgs}} aa</p>
+    <ion-img [src]=imgs></ion-img>-->
+    <!--<img src={{imgs}} alt="">-->
+
+    <!--<img [src]="base64Image" *ngIf="base64Image" />-->
+    <!--<img src="base64Image" alt="">-->
+    <!--<label for="">{{base64Image}}</label>-->
+
+
+    <!--<form name="uploadForm">
+        <table>
+            <tbody>
+                <tr>
+                    <td><input id="uploadImage" type="file" name="myPhoto" (change)="loadImageFile($event);" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>-->
+    <input  type="file" multiple="multiple" accept="image/png,image/jpeg,image/jpg,image/gif,image/bmp" (change)="loadImageFile($event);" />
+
+
+</ion-content>

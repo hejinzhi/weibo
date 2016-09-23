@@ -45,26 +45,31 @@ ion-content {
         width: 21px;
         vertical-align: text-top;
     }
-    .search-input {}
+    // .search-input {}
 
-    .search-div {
-        background-color: #fff;
-        height: 50px;
-        position: relative;
-        width: 100%;
-    }
-    .search-input {
-        background-color: #eee;
-        border-radius: 5px;
-        height: 30px;
-        line-height: 0px;
-        width: 95%;
-        position: absolute;
-        margin-top: 3%;
-        margin-left: 2%;
-        text-indent: 30px;
-        background: #eee url("/img/weibo_search.png") 0 5px no-repeat ;
-    }
+    // .search-div {
+    //     background-color: #fff;
+    //     height: 50px;
+    //     position: relative;
+    //     width: 100%;
+    // }
+    // .search-input {
+    //     background-color: #eee;
+    //     border-radius: 5px;
+    //     height: 30px;
+    //     line-height: 0px;
+    //     width: 95%;
+    //     position: absolute;
+    //     margin-top: 3%;
+    //     margin-left: 2%;
+    //     text-indent: 30px;
+    //     background: #eee url("/img/weibo_search.png") 0 5px no-repeat ;
+    // }
+
+.searchbar-input-container {
+    height: 34px;
+}
+
     .swiper-wrapper {
         height: 100px;
         width: 100%;

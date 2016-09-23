@@ -2,9 +2,15 @@ import {MainMsg} from './main-msg';
 
 export const MAINMSGS: MainMsg[] = [
 	{
-		name: 'IT程序员', sendTime: '13分钟前', sendMachine: '酷勤网', headFace: 'img/adam.jpg',
-		desc: '李开复万字长文科普人工智能', descImage: ['img/ben.png'],
-		resendNum: 152, commentNum: 99, thumbNum: 3254
+		name: 'IT程序员', 
+		sendTime: '13分钟前', 
+		sendMachine: '酷勤网', 
+		headFace: 'img/adam.jpg',
+		desc: '李开复万字长文科普人工智能', 
+		descImage: ['img/ben.png'],
+		resendNum: 152,
+		 commentNum: 99, 
+		 thumbNum: 3254
 	},
 	{
 		name: '锦___', sendTime: '15分钟前', sendMachine: '华为畅玩5X', headFace: 'img/max.png',

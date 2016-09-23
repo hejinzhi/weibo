@@ -1,79 +1,85 @@
 <ion-header>
-    <ion-navbar>
-        <ion-title>
-            <h3>微博</h3>
-        </ion-title>
-        <ion-buttons start>
-            <button>
-                <ion-icon name="person-add-outline"></ion-icon>
-            </button>
-        </ion-buttons>
-        <ion-buttons end>
-            <button>
-                <ion-icon name="radio-outline"></ion-icon>
-            </button>
-        </ion-buttons>
-    </ion-navbar>
+  <ion-navbar>
+    <ion-title>
+      <h3>微博</h3>
+    </ion-title>
+    <ion-buttons start>
+      <button>
+        <ion-icon name="person-add-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button>
+        <ion-icon name="radio-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 </ion-header>
-<ion-content class="home">
-    <ion-card *ngFor="let msg of mainMsg" (click)="goToDetailPage(msg)">
-        <ion-item>
-            <ion-avatar item-left>
-                <img src={{msg.headFace}}>
-            </ion-avatar>
-            <h2>{{msg.name}}</h2>
-            <p>{{msg.sendTime}} 来自 {{msg.sendMachine}}</p>
-        </ion-item>
-        <p>{{msg.desc}}</p>
-        <div>
-            <ion-row *ngIf="msg.descImage.length==1">
+<ion-content class="home" #content>
+  <ion-card *ngFor="let msg of mainMsg; let i = index" (click)="goToDetailPage(msg)" (press)="showPopover(msg._id,i)">
+    <ion-item>
+      <ion-avatar item-left>
+        <img src={{msg.headFace}}>
+      </ion-avatar>
+      <h2>{{msg.name}}</h2>
+      <p>{{msg.sendTime}} 来自 {{msg.sendMachine}}</p>
+    </ion-item>
+    <p>{{msg.desc}}</p>
+    <!-- <div>
+      <p>{{imageSize}}</p> -->
+      <div [virtualScroll]="msg.descImage" [approxItemHeight]="imageSize + 'px'" [approxItemWidth]="imageSize + 'px'" [bufferRatio]="5">
+        <div *virtualItem="let imageEntity" class="image-container" [style.width]="imageSize + 'px'" [style.height]="imageSize + 'px'" (click)="imageClicked(imageEntity,$event)">
+          <img src={{imageEntity}} class="image">
+        </div>
+      </div>
+
+
+      <!-- <ion-row *ngIf="msg.descImage.length==1">
                 <ion-col width-50>
-                    <img src={{msg.descImage[0]}} class="content-img">
+                    <img src={{msg.descImage[0]}} class="content-img" (click)="goLargeImage(msg.descImage[0],$event)">
                 </ion-col>
             </ion-row>
             <ion-row *ngIf="msg.descImage.length==2">
                 <ion-col width-33>
-                    <img src={{msg.descImage[0]}} class="content-img">
+                    <img src={{msg.descImage[0]}} class="content-img"  (click)="goLargeImage(msg.descImage[0],$event)">
                 </ion-col>
                 <ion-col width-33>
-                    <img src={{msg.descImage[1]}} class="content-img">
+                    <img src={{msg.descImage[1]}} class="content-img"  (click)="goLargeImage(msg.descImage[1],$event)">
                 </ion-col>
             </ion-row>
             <ion-row *ngIf="msg.descImage.length==3">
                 <ion-col width-33>
-                    <img src={{msg.descImage[0]}} class="content-img">
+                    <img src={{msg.descImage[0]}} class="content-img" (click)="goLargeImage(msg.descImage[0],$event)">
                 </ion-col>
                 <ion-col width-33>
-                    <img src={{msg.descImage[1]}} class="content-img">
+                    <img src={{msg.descImage[1]}} class="content-img" (click)="goLargeImage(msg.descImage[1],$event)">
                 </ion-col>
                 <ion-col width-33>
-                    <img src={{msg.descImage[2]}} class="content-img">
+                    <img src={{msg.descImage[2]}} class="content-img" (click)="goLargeImage(msg.descImage[2],$event)">
                 </ion-col>
-            </ion-row>
-        </div>
-        <ion-row class="bottom-button">
-            <ion-col width-33>
-                <button small clear gray>
-                    <ion-icon name="send-outline"></ion-icon>
-                    <div>{{msg.resendNum}}</div>
-                </button>
-            </ion-col>
-            <span class="short-line"></span>
-            <ion-col width-33>
-                <button small clear gray>
-                    <ion-icon name="chatboxes-outline"></ion-icon>
-                    <div>{{msg.commentNum}}</div>
-                </button>
-            </ion-col>
-            <span class="short-line"></span>
-            <ion-col width-33>
-                <button small clear gray>
-                    <ion-icon name="thumbs-up-outline"></ion-icon>
-                    <div>{{msg.thumbNum}}</div>
-                </button>
-            </ion-col>
-        </ion-row>
-    </ion-card>
+            </ion-row> -->
+    <!-- </div> -->
+    <ion-row class="bottom-button">
+      <ion-col width-33>
+        <button small clear gray>
+          <ion-icon name="send-outline"></ion-icon>
+          <div>{{msg.resendNum}}</div>
+        </button>
+      </ion-col>
+      <span class="short-line"></span>
+      <ion-col width-33>
+        <button small clear gray>
+          <ion-icon name="chatboxes-outline"></ion-icon>
+          <div>{{msg.commentNum}}</div>
+        </button>
+      </ion-col>
+      <span class="short-line"></span>
+      <ion-col width-33>
+        <button small clear gray>
+          <ion-icon name="thumbs-up-outline"></ion-icon>
+          <div>{{msg.thumbNum}}</div>
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
 </ion-content>
-
-

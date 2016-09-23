@@ -1,10 +1,10 @@
 <ion-header>
-<!-- hideBackButton -->
-    <ion-navbar >  
+    <!-- hideBackButton -->
+    <ion-navbar>
         <ion-title>
-            <h3>微博正文</h3>
+            <h3>发微博</h3>
         </ion-title>
-       <!--  <ion-buttons start>
+        <!--  <ion-buttons start>
             <button (click)="goBack()">
                 <ion-icon name="arrow-back"></ion-icon>
             </button>
@@ -16,10 +16,7 @@
         </ion-buttons>
     </ion-navbar>
 </ion-header>
-<ion-content class="home" hide-tabs >
-    <!-- <div *ngFor="let msg of mainMsg">
-    {{msg.name}}
-</div> -->
+<ion-content class="home" hide-tabs #content>
     <ion-card>
         <ion-item>
             <ion-avatar item-left>
@@ -29,7 +26,12 @@
             <p>{{msg.sendTime}} 来自 {{msg.sendMachine}}</p>
         </ion-item>
         <p>{{msg.desc}}</p>
-        <div>
+        <div [virtualScroll]="msg.descImage" [approxItemHeight]="imageSize + 'px'" [approxItemWidth]="imageSize + 'px'" [bufferRatio]="5">
+            <div *virtualItem="let imageEntity" class="image-container" [style.width]="imageSize + 'px'" [style.height]="imageSize + 'px'" (click)="imageClicked(imageEntity,$event)">
+                <img src={{imageEntity}} class="image">
+            </div>
+        </div>
+        <!--<div>
             <ion-row *ngIf="msg.descImage.length==1">
                 <ion-col width-50>
                     <img src={{msg.descImage[0]}} class="content-img">
@@ -54,34 +56,12 @@
                     <img src={{msg.descImage[2]}} class="content-img">
                 </ion-col>
             </ion-row>
-        </div>
-        <!-- <ion-row class="bottom-button">
-            <ion-col width-33>
-                <button small clear gray>
-                    <ion-icon name="send-outline"></ion-icon>
-                    <div>{{msg.resendNum}}</div>
-                </button>
-            </ion-col>
-            <span class="short-line"></span>
-            <ion-col width-33>
-                <button small clear gray>
-                    <ion-icon name="chatboxes-outline"></ion-icon>
-                    <div>{{msg.commentNum}}</div>
-                </button>
-            </ion-col>
-            <span class="short-line"></span>
-            <ion-col width-33>
-                <button small clear gray>
-                    <ion-icon name="thumbs-up-outline"></ion-icon>
-                    <div>{{msg.thumbNum}}</div>
-                </button>
-            </ion-col>
-        </ion-row> -->
+        </div>-->
     </ion-card>
 
     <div class="option-menu">
         <ion-row>
-            <ion-col width-20><button [ngClass]="{'highline': whatToShow == 'zhuanfa'}"  gray clear outline (click)="show('zhuanfa')">转发{{msg.resendNum}}</button></ion-col>
+            <ion-col width-20><button [ngClass]="{'highline': whatToShow == 'zhuanfa'}" gray clear outline (click)="show('zhuanfa')">转发{{msg.resendNum}}</button></ion-col>
             <ion-col width-20><button [ngClass]="{'highline': whatToShow == 'pinglun'}" gray clear outline (click)="show('pinglun')">评论{{msg.commentNum}}</button></ion-col>
             <ion-col offset-33><button gray clear outline item-right [ngClass]="{'highline': whatToShow == 'zan'}" (click)="show('zan')">赞{{msg.thumbNum}}</button></ion-col>
         </ion-row>
@@ -93,7 +73,7 @@
                 <img src={{p.headFace}} alt="">
             </ion-avatar>
             <h2>{{p.name}}</h2>
-            <button clear item-right  class="thumb-up" (click)="toggle(p)" [ngClass]="{'button-clear-danger':p.thumbUp}"><ion-icon name="thumbs-up-outline" ><span>{{p.thumbNum}}</span></ion-icon></button> 
+            <button clear item-right class="thumb-up" (click)="toggle(p)" [ngClass]="{'button-clear-danger':p.thumbUp}"><ion-icon name="thumbs-up-outline" ><span>{{p.thumbNum}}</span></ion-icon></button>
             <p>{{p.date}} {{p.time}}</p>
             <p>{{p.content}}</p>
         </ion-item>
@@ -105,13 +85,13 @@
                 <img src={{p.headFace}} alt="">
             </ion-avatar>
             <h2>{{p.name}}</h2>
-            <button clear item-right  class="thumb-up" (click)="toggle(p)" [ngClass]="{'button-clear-danger':p.thumbUp}"></button> 
+            <button clear item-right class="thumb-up" (click)="toggle(p)" [ngClass]="{'button-clear-danger':p.thumbUp}"></button>
             <p>{{p.date}} {{p.time}}</p>
             <p>{{p.content}}</p>
         </ion-item>
     </ion-list>
 
-        <ion-list *ngIf="whatToShow == 'zan'">
+    <ion-list *ngIf="whatToShow == 'zan'">
         <ion-item *ngFor="let p of zan">
             <ion-avatar item-left>
                 <img src={{p.headFace}} alt="">
@@ -120,33 +100,33 @@
         </ion-item>
     </ion-list>
 
-     <ion-infinite-scroll (ionInfinite)="doInfinite($event,whatToShow)">
-   <ion-infinite-scroll-content></ion-infinite-scroll-content>
- </ion-infinite-scroll>
+    <ion-infinite-scroll (ionInfinite)="doInfinite($event,whatToShow)">
+        <ion-infinite-scroll-content></ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 
 </ion-content>
 
-    <ion-footer class="home">
-        <ion-row class="option-menu">
-            <ion-col width-33>
-                <button  clear >
+<ion-footer class="home">
+    <ion-row class="option-menu">
+        <ion-col width-33>
+            <button clear>
                     <ion-icon name="send-outline"></ion-icon>
                     <div>转发</div>
                 </button>
-            </ion-col>
-            <span class="short-line-footer"></span>
-            <ion-col width-33>
-                <button  clear (click)="goToXiePingLun()">
+        </ion-col>
+        <span class="short-line-footer"></span>
+        <ion-col width-33>
+            <button clear (click)="goToXiePingLun()">
                     <ion-icon name="chatboxes-outline"></ion-icon>
                     <div>评论</div>
                 </button>
-            </ion-col>
-            <span class="short-line-footer"></span>
-            <ion-col width-33>
-                <button  clear >
+        </ion-col>
+        <span class="short-line-footer"></span>
+        <ion-col width-33>
+            <button clear>
                     <ion-icon name="thumbs-up-outline"></ion-icon>
                     <div>赞</div>
                 </button>
-            </ion-col>
-        </ion-row>
-    </ion-footer>
+        </ion-col>
+    </ion-row>
+</ion-footer>

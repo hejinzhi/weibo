@@ -1,0 +1,43 @@
+.new-weibo {
+    .header {
+        height: 30px;
+        text-align: center;
+    }
+    .header h5 {
+        margin: 0;
+        color: #000;
+    }
+    .header p {
+        font-size: 10px;
+        margin-left: 6px;
+    }
+
+    ion-content{
+    	background-color: #fff;
+    }
+
+    ion-textarea{
+		width: 100%;
+		margin-right: 8px;
+    }
+
+    textarea{
+    	text-indent: 3.8%;
+    }
+
+    .text-input{
+    	width: 100%;
+    
+    }
+
+    textarea::placeholder {
+		padding-left:3.8%;
+	}
+
+    .virtual-position{
+        margin-left: 7px;
+    }
+
+
+
+}

@@ -1,7 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, ElementRef, ViewChild} from '@angular/core';
 import {NavController, NavParams, ViewController} from 'ionic-angular';
 import { OnInit } from '@angular/core';
 import {Pinglun} from '../pinglun/pinglun';
+import {PhotoViewerController} from '../viewer/photo-viewer-view-controller';
+
+
 
 @Component({
 	templateUrl: 'build/pages/home/home-detail-component.html',
@@ -10,6 +13,9 @@ export class HomeDetail implements OnInit {
 	msg;
 	IsOn: boolean = false;
 	whatToShow: string = 'zhuanfa';
+
+	@ViewChild('content', { read: ElementRef }) contentRef: ElementRef;
+	private imageSize: number;
 
 	//hard code数据测试
 	pinglun: any[] = [{
@@ -174,8 +180,20 @@ export class HomeDetail implements OnInit {
 
 
 
-	constructor(private viewCtrl: ViewController, private navCtrl: NavController, private navParams: NavParams) {
+	constructor(private viewCtrl: ViewController, private navCtrl: NavController, private navParams: NavParams, private photoViewerController: PhotoViewerController) {
 		this.msg = this.navParams.get('paramWeibo');
+	}
+
+	setImageSize() {
+		this.imageSize = this.setDimensions() - 5;
+	}
+
+	setDimensions() {
+		let contentWidth = this.contentRef.nativeElement.offsetWidth;
+		let potentialNumColumns = Math.floor(contentWidth / MIN_DESIRED_IMAGE_SIZE);
+		let calculatedNumColumns = Math.min(MAX_NUM_COLUMNS, potentialNumColumns);
+		let numColumns = Math.max(calculatedNumColumns, MIN_NUM_COLUMNS);
+		return Math.floor(contentWidth / numColumns);
 	}
 
 	ngOnInit() {
@@ -188,6 +206,7 @@ export class HomeDetail implements OnInit {
 
 	ionViewWillEnter() {
 		this.viewCtrl.setBackButtonText('');
+		this.setImageSize();
 	}
 
 	show(param) {
@@ -206,8 +225,12 @@ export class HomeDetail implements OnInit {
 		}
 	}
 
-	goToXiePingLun(){
+	goToXiePingLun() {
 		this.navCtrl.push(Pinglun);
+	}
+
+	imageClicked(imageEntity: string, event: Event) {
+		this.photoViewerController.imageClicked(imageEntity, event);
 	}
 
 
@@ -243,3 +266,8 @@ export class HomeDetail implements OnInit {
 
 
 
+const MIN_DESIRED_IMAGE_SIZE = 120;
+const NUM_IMAGES: number = 500;
+const MIN_NUM_COLUMNS: number = 3;
+const MAX_NUM_COLUMNS: number = 5;
+const MARGIN: number = 5;

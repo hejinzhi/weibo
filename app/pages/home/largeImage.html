@@ -1,0 +1,26 @@
+<ion-content class="large-image" (click)="closeModal()">
+    <div class="modal image-modal transparent">
+        <ion-pane class="transparent">
+            <img src="{{img}}" class="fullscreen-image"  />
+        </ion-pane>
+    </div>
+</ion-content>
+
+
+<!--      <ion-content class="transparent">
+        <ion-backdrop #backdrop></ion-backdrop>
+        <div class="wrapper" #wrapper>
+          <div class="btn-container-wrapper" #btnContainer>
+            <div class="btn-container">
+              <button large clear class="pv-show-cursor" (click)="dismissView()">
+                <ion-icon name="close"></ion-icon>
+              </button>
+            </div>
+          </div>
+          <div class="contentContainer" #contentContainer></div>
+          <img class="scaled-image no-pointers" #scaledImage src="{{img}}">
+          <img class="non-scaled-image no-pointers" #nonScaledImage src="{{img}}">
+          <div class="scaled-image no-pointers" #scaledImage style="background-color: red;"></div>
+          <div class="non-scaled-image no-pointers" #nonScaledImage style="background-color: green;"></div>
+        </div>
+    </ion-content> -->

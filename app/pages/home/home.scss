@@ -1,7 +1,8 @@
 .home {
     ion-card {
         margin: 0px 0px 5px 0px;
-        padding: 0px 5px 0px 5px;
+        // padding: 0px 0px 0px 0px;
+        padding-left: 0px;
         width: 100%;
         border-radius: 2px;
         font-size: 1.4rem;
@@ -12,7 +13,8 @@
         // height: 75px;
     }
     ion-card p {
-        margin: 0 0 2px;
+        margin: 0 0 2px 0;
+        margin-left: 5px;
         font-size: 1.4rem;
         color: #333;
     }
@@ -80,5 +82,10 @@
     .highline{
         border-bottom: solid 3px #ff8200;
         color: #000;
+    }
+
+    .virtual-scroll{
+       margin-left: 5px;
+      //padding-left: 15px;
     }
 }

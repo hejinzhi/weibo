@@ -15,9 +15,9 @@
     <ion-list>
         <ion-item class="head-top">
             <ion-avatar item-left>
-                <img src="img/ionic.png">
+                <img src={{loginMsg.headFace}}>
             </ion-avatar>
-            <h2>锦___</h2>
+            <h2>{{loginMsg.nickname}}</h2>
             <p>简介：暂无简介</p>
             <button clear item-right>会员</button>
         </ion-item>
@@ -62,7 +62,6 @@
             </div>
         </ion-item>
     </ion-list>
-
     <ion-list>
         <ion-item>
             <ion-thumbnail item-left>
@@ -74,7 +73,7 @@
                 </div>
             </div>
         </ion-item>
-                <ion-item>
+        <ion-item>
             <ion-thumbnail item-left>
                 <img src="img/me-dianping.png" alt="">
             </ion-thumbnail>
@@ -84,7 +83,7 @@
                 </div>
             </div>
         </ion-item>
-                        <ion-item>
+        <ion-item>
             <ion-thumbnail item-left>
                 <img src="img/me-zan.png" alt="">
             </ion-thumbnail>
@@ -95,9 +94,8 @@
             </div>
         </ion-item>
     </ion-list>
-
     <ion-list>
-                              <ion-item>
+        <ion-item>
             <ion-thumbnail item-left>
                 <img src="img/me-pay.png" alt="">
             </ion-thumbnail>
@@ -118,9 +116,8 @@
             </div>
         </ion-item>
     </ion-list>
-
-        <ion-list>
-                              <ion-item>
+    <ion-list>
+        <ion-item>
             <ion-thumbnail item-left>
                 <img src="img/me-fensi-t.png" alt="">
             </ion-thumbnail>
@@ -141,5 +138,4 @@
             </div>
         </ion-item>
     </ion-list>
-
 </ion-content>
